@@ -5,32 +5,46 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float walkspeed;
-    [SerializeField] protected float maxHealth, currentHealth;
     [SerializeField] protected float attackSpeed;
-    [SerializeField] protected Rigidbody2D rb2D;
-    [SerializeField] private TextMeshProUGUI health;
+    [SerializeField] private TextMeshProUGUI healthDisplay;
 
-    protected abstract void Attack();
+    protected Rigidbody2D rb2D;
 
-    protected virtual void Start()
+    [SerializeField] protected int maxHealth;
+    protected int _currentHealth
     {
-        currentHealth = maxHealth;
-    }
-    protected virtual void Update()
-    {
-        health.text = $"{currentHealth}";
-        if (currentHealth == 0)
+        get
         {
-            Destroy(gameObject);
+            return _currentHealth;
+        }
+        set
+        {
+            _currentHealth = value;
+
+            // check for death
+            if (_currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            // update gui
+            healthDisplay.text = $"{_currentHealth}";
         }
     }
 
-    public void Heal(int health)
+    protected abstract void Attack();
+
+    protected virtual void Awake()
     {
-        currentHealth += health;
+        rb2D = GetComponent<Rigidbody2D>();
     }
-    public void DealDamage(int damage)
+    protected virtual void Start()
     {
-        currentHealth--;
+        _currentHealth = maxHealth;
+    }
+
+    public void AddHealth(int add)
+    {
+        _currentHealth += add;
     }
 }

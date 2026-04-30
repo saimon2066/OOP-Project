@@ -21,7 +21,7 @@ public class MeeleEnemy : BaseEnemy
     {
         if (collision.TryGetComponent(out IDamageable damageable) && _wasAttacking)
         {
-            damageable.DealDamage(1);
+            damageable.AddHealth(-1);
         }
         _wasAttacking = false;
     }

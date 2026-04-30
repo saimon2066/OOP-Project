@@ -15,7 +15,6 @@ public abstract class BaseAbility : MonoBehaviour
             Activate();
             _time = cooldown;
         }
-
         if (_time > 0)
         {
             _time -= Time.deltaTime;

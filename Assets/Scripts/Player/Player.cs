@@ -9,10 +9,8 @@ public class Player : Character
         _wasPressed = true;
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-
         Vector2 moveInput = InputManager.instance.inputs.Player.Move.ReadValue<Vector2>();
         rb2D.linearVelocity = moveInput * walkspeed;
 
@@ -26,7 +24,7 @@ public class Player : Character
     {
         if (collider.TryGetComponent(out IDamageable damageable) && _wasPressed)
         {
-            damageable.DealDamage(1);
+            damageable.AddHealth(-1);
         }
         _wasPressed = false;
     }

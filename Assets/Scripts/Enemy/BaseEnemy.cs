@@ -16,10 +16,8 @@ public abstract class BaseEnemy : Character
 
         _attackTime = attackSpeed;
     }
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
-
         _isAttacking = Vector3.Distance(rb2D.position, playerRb2D.position) < attackRadius;
 
         if (playerRb2D != null)
