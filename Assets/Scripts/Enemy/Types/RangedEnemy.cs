@@ -6,16 +6,16 @@ public class RangedEnemy : BaseEnemy
 
     protected override void Attack()
     {
-        GameObject bullet = Instantiate(bulletPrefab, rb2D.position, Quaternion.identity);  
+        GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);  
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
 
-        Rigidbody2D bulletRb2D = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dir = (playerRb2D.position - rb2D.position).normalized;
+        Vector2 dir = (player.transform.position - transform.position).normalized;
 
-        bulletRb2D.linearVelocity = dir * 10;   
+        bullet.Throw(dir, attackDamage);
     }
     protected override void Chase()
     {
-        Vector2 dir = (playerRb2D.position - rb2D.position).normalized;
-        rb2D.linearVelocity = dir * walkspeed;
+        Vector2 dir = (player.transform.position - transform.position).normalized;
+        rb2D.linearVelocity = dir * moveSpeed;
     }
 }

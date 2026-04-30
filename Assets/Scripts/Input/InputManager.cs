@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        if (inputs == null) inputs = new();
+        inputs ??= new();
     }
 
     private void OnEnable()

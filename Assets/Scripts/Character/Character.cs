@@ -4,25 +4,30 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public abstract class Character : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected float walkspeed;
-    [SerializeField] protected float attackSpeed;
+    [Header("Settings")]
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float attackCooldown;
+    [SerializeField] protected int attackDamage;
+    [SerializeField] protected int maxHealth;
+    [Space(5)]
+    [Header("References")]
     [SerializeField] private TextMeshProUGUI healthDisplay;
 
     protected Rigidbody2D rb2D;
 
-    [SerializeField] protected int maxHealth;
+    private int _health; // without caused stack overflow
     protected int _currentHealth
     {
         get
         {
-            return _currentHealth;
+            return _health;
         }
         set
         {
-            _currentHealth = value;
+            _health = Mathf.Clamp(value, 0, maxHealth);
 
             // check for death
-            if (_currentHealth <= 0)
+            if (_currentHealth <= Mathf.Epsilon)
             {
                 Destroy(gameObject);
             }

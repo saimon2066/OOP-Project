@@ -13,8 +13,11 @@ public class MeeleEnemy : BaseEnemy
     {
         _isAttacking = false;
 
-        Vector2 dir = (playerRb2D.position - rb2D.position).normalized;
-        rb2D.linearVelocity = dir * walkspeed;
+        Vector2 dir = (player.transform.position - transform.position).normalized;
+        rb2D.linearVelocity = dir * moveSpeed;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f; // get the angle
+        rb2D.SetRotation(angle);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

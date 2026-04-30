@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public abstract class BaseAbility : MonoBehaviour
 {
+    [SerializeField] protected Player player;
     [SerializeField] protected InputAction abilityAction;
     [SerializeField] protected float cooldown;
 
@@ -10,12 +11,12 @@ public abstract class BaseAbility : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (abilityAction.WasPerformedThisFrame() && _time <= 0)
+        if (abilityAction.WasPerformedThisFrame() && _time <= Mathf.Epsilon)
         {
             Activate();
             _time = cooldown;
         }
-        if (_time > 0)
+        if (_time > Mathf.Epsilon)
         {
             _time -= Time.deltaTime;
         }

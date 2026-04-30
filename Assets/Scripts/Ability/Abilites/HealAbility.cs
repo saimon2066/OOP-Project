@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class HealAbility : BaseAbility
 {
-    [SerializeField] private Player player;
-
+    [SerializeField] private int healAmount;
+    
     protected override void Activate()
     {
-        player.AddHealth(5);
+        player.AddHealth(healAmount);
     }
 }

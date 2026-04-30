@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!50 &384917819 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 2596657906369996487, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
-  m_PrefabInstance: {fileID: 4427451102813568043}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +200,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.1, g: 0.1, b: 0.1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -389,6 +384,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &998221256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1625525458541676301, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
+  m_PrefabInstance: {fileID: 4427451102813568043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &998221258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8495582669758322438, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
+  m_PrefabInstance: {fileID: 4427451102813568043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998221256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c19c45e61d6064e9d44874be15e9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!1 &2081020556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081020557}
+  - component: {fileID: 2081020559}
+  - component: {fileID: 2081020558}
+  m_Layer: 0
+  m_Name: Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081020557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081020556}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081020558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081020556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52026102ecefc1e409bc3b76d46f1547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealAbility
+  player: {fileID: 998221258}
+  abilityAction:
+    m_Name: Ability
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5ab40859-f8b0-4c09-a3e8-f49b76010038
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4ece6ba5-aa00-48b7-90ca-d8eb826ce95b
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ability
+      m_Flags: 0
+    m_Flags: 0
+  cooldown: 10
+  healAmount: 5
+--- !u!114 &2081020559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081020556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb65ad3265c7e80498f6df1519842c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireballAbility
+  player: {fileID: 998221258}
+  abilityAction:
+    m_Name: Ability
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 92a36721-771a-4a5e-8334-97729f47716a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 79bbe768-7aa0-48b3-a825-61484699fc2a
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ability
+      m_Flags: 0
+    m_Flags: 0
+  cooldown: 20
+  fireballDamage: 1
+  fireballPrefab: {fileID: 9032077396036401449, guid: 22374e21fdf260348a3cbe5b0333985f, type: 3}
 --- !u!1001 &1812990236854044209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,9 +507,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 315489392063993417, guid: a345b06be73de8f43ba29251993059db, type: 3}
-      propertyPath: playerRb2D
+      propertyPath: player
       value: 
-      objectReference: {fileID: 384917819}
+      objectReference: {fileID: 998221256}
+    - target: {fileID: 315489392063993417, guid: a345b06be73de8f43ba29251993059db, type: 3}
+      propertyPath: attackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 315489392063993417, guid: a345b06be73de8f43ba29251993059db, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3419055323239577890, guid: a345b06be73de8f43ba29251993059db, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -461,6 +578,14 @@ PrefabInstance:
     - target: {fileID: 1625525458541676301, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495582669758322438, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495582669758322438, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
+      propertyPath: attackCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9207102080472327480, guid: 9b35fa0cecdd56843adbf394bf65ab7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -556,16 +681,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994964341500129720, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
-      propertyPath: playerRb2D
+      propertyPath: player
       value: 
-      objectReference: {fileID: 384917819}
+      objectReference: {fileID: 998221256}
     - target: {fileID: 2994964341500129720, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
-      propertyPath: attackSpeed
-      value: 1
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2994964341500129720, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
-      propertyPath: attackRadius
-      value: 1.2
+      propertyPath: attackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994964341500129720, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
+      propertyPath: attackCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8613700655485455714, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
       propertyPath: m_Name
@@ -583,6 +712,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 950327039}
+  - {fileID: 2081020557}
   - {fileID: 4427451102813568043}
   - {fileID: 1812990236854044209}
   - {fileID: 7148579871287783386}

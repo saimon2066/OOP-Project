@@ -170,14 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f70445666013b4fb25fe88c933723e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
-  walkspeed: 3
+  moveSpeed: 3
+  attackCooldown: 2
+  attackDamage: 0
   maxHealth: 5
-  currentHealth: 5
-  rb2D: {fileID: 72050222974784287}
-  health: {fileID: 208237266379397662}
-  attackSpeed: 1
+  healthDisplay: {fileID: 208237266379397662}
   attackRadius: 6
-  playerRb2D: {fileID: 0}
+  player: {fileID: 0}
   bulletPrefab: {fileID: 9032077396036401449, guid: d2079bf294a0ad14887bef336e41d25d, type: 3}
 --- !u!1 &4585758729033798171
 GameObject:

@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class BaseEnemy : Character
 {   
     [SerializeField] protected float attackRadius;
-    [SerializeField] protected Rigidbody2D playerRb2D;
+    [SerializeField] protected GameObject player;
 
     protected bool _isAttacking;
     private float _attackTime;
@@ -14,26 +14,26 @@ public abstract class BaseEnemy : Character
     {
         base.Start();
 
-        _attackTime = attackSpeed;
+        _attackTime = attackCooldown;
     }
     protected virtual void Update()
     {
-        _isAttacking = Vector3.Distance(rb2D.position, playerRb2D.position) < attackRadius;
+        _isAttacking = Vector3.Distance(rb2D.position, player.transform.position) < attackRadius;
 
-        if (playerRb2D != null)
+        if (player != null)
         {
             if (_isAttacking)
             {
                 rb2D.linearVelocity = Vector2.zero;
 
-                if (_attackTime > 0f)
+                if (_attackTime > Mathf.Epsilon)
                 {
                     _attackTime -= Time.deltaTime;
                 }
-                if (_attackTime <= 0f)
+                if (_attackTime <= Mathf.Epsilon)
                 {
                     Attack();
-                    _attackTime = attackSpeed;
+                    _attackTime = attackCooldown;
                 }
             }
             else

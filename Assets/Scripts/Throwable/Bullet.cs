@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class Bullet : Throwable
 {
-    protected override void Throw(Transform target)
+    private int _damage;
+
+    public override void Throw(Vector2 direction, int damage)
     {
-        Vector2 dir = (target.position - transform.position).normalized;
-        rb2D.linearVelocity = dir * speed;
+        rb2D.linearVelocity = direction * speed;
+        _damage = damage;
+        
+        StartCoroutine(DespawnCoroutine());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            damageable.AddHealth(-damage);
+            damageable.AddHealth(-_damage);
             Destroy(gameObject);
         }
     }
