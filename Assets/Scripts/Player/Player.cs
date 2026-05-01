@@ -54,7 +54,7 @@ public class Player : Character
     {
         if (collider.TryGetComponent(out IDamageable damageable) && _wasPressed)
         {
-            damageable.AddHealth(-1);
+            damageable.AddHealth(-attackDamage);
         }
         _wasPressed = false;
     }

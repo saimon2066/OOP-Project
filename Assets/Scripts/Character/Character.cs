@@ -27,13 +27,13 @@ public abstract class Character : MonoBehaviour, IDamageable
             _health = Mathf.Clamp(value, 0, maxHealth);
 
             // check for death
-            if (_currentHealth <= Mathf.Epsilon)
+            if (_health <= 0)
             {
                 Destroy(gameObject);
             }
 
             // update gui
-            healthDisplay.text = $"{_currentHealth}";
+            healthDisplay.text = $"{_health}";
         }
     }
 
