@@ -18,10 +18,10 @@ public abstract class BaseEnemy : Character
     }
     protected virtual void Update()
     {
-        _isAttacking = Vector3.Distance(rb2D.position, player.transform.position) < attackRadius;
-
         if (player != null)
         {
+            _isAttacking = Vector3.Distance(rb2D.position, player.transform.position) < attackRadius;
+
             if (_isAttacking)
             {
                 rb2D.linearVelocity = Vector2.zero;
