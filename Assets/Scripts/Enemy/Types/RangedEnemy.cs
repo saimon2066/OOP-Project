@@ -7,7 +7,7 @@ public class RangedEnemy : BaseEnemy
     protected override void Attack()
     {
         GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);  
-        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        Throwable bullet = bulletObj.GetComponent<Throwable>();
 
         Vector2 dir = (player.transform.position - transform.position).normalized;
 

@@ -1,14 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(DamageDealer))]
 public class Player : Character
 {
-    private bool _wasPressed;
+    private DamageDealer _damageDealer;
     private float _attackTime;
 
     protected override void Attack()
     {
-        _wasPressed = true;
+        _damageDealer.SetDamage(attackDamage);
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _damageDealer = GetComponent<DamageDealer>();
+    }
+    protected override void Start()
+    {
+        base.Start();
+
+        _attackTime = attackCooldown;
     }
 
     private void OnEnable()
@@ -18,12 +31,6 @@ public class Player : Character
     private void OnDisable()
     {
         InputManager.instance.inputs.Player.Attack.performed -= OnPlayerAttackPerformed;
-    }
-    protected override void Start()
-    {
-        base.Start();
-
-        _attackTime = attackCooldown;
     }
     private void Update()
     {
@@ -40,7 +47,6 @@ public class Player : Character
             _attackTime -= Time.deltaTime;
         }
     }
-
     private void OnPlayerAttackPerformed(InputAction.CallbackContext context)
     {
         if (_attackTime <= Mathf.Epsilon)
@@ -48,14 +54,5 @@ public class Player : Character
             Attack();
             _attackTime = attackCooldown;
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D collider)
-    {
-        if (collider.TryGetComponent(out IDamageable damageable) && _wasPressed)
-        {
-            damageable.AddHealth(-attackDamage);
-        }
-        _wasPressed = false;
     }
 }

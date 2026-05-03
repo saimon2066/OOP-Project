@@ -6,6 +6,6 @@ public class HealAbility : BaseAbility
     
     protected override void Activate()
     {
-        player.AddHealth(healAmount);
+        player.Heal(healAmount);
     }
 }

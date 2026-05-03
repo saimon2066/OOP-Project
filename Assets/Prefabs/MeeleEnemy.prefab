@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 5805488709085555901}
   - component: {fileID: 78748865057119216}
   - component: {fileID: 2994964341500129720}
+  - component: {fileID: 3918713169485509136}
   m_Layer: 3
   m_Name: MeeleEnemy
   m_TagString: Untagged
@@ -555,3 +556,16 @@ MonoBehaviour:
   healthDisplay: {fileID: 7997939146268875645}
   attackRadius: 1.2
   player: {fileID: 0}
+--- !u!114 &3918713169485509136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613700655485455714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8f0473c157b14488f65801c6cf567c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  resetCanDamage: 1

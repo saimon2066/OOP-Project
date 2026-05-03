@@ -8,7 +8,7 @@ public class FireballAbility : BaseAbility
     protected override void Activate()
     {
         GameObject fireballObj = Instantiate(fireballPrefab, player.transform.position, Quaternion.identity);
-        Fireball fireball = fireballObj.GetComponent<Fireball>();
+        Throwable fireball = fireballObj.GetComponent<Throwable>();
 
         fireball.Throw(player.transform.up, fireballDamage);
     }

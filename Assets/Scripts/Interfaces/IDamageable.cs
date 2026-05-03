@@ -1,4 +1,5 @@
 public interface IDamageable
 {
-    public void AddHealth(int add);
+    public void TakeDamage(int damage);
+    public void Heal(int heal);
 }

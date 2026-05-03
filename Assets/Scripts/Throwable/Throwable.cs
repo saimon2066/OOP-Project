@@ -1,22 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public abstract class Throwable : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D), typeof(DamageDealer))]
+public class Throwable : MonoBehaviour
 {
     [SerializeField] private float despawnTime;
-    [SerializeField] protected float speed;
+    [SerializeField] private float speed;
 
-    protected Rigidbody2D rb2D;
+    private Rigidbody2D _rb2D;
+    private DamageDealer _damageDealer;
             
-    public abstract void Throw(Vector2 direction, int damage);
-    
-    protected virtual void Awake()
+    public void Throw(Vector2 direction, int damage)
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        _rb2D.linearVelocity = direction * speed;
+        _damageDealer.SetDamage(damage);
+
+        StartCoroutine(DespawnCoroutine());
+    }
+    
+    private void Awake()
+    {
+        _rb2D = GetComponent<Rigidbody2D>();
+        _damageDealer = GetComponent<DamageDealer>();
     }
 
-    protected IEnumerator DespawnCoroutine()
+    private IEnumerator DespawnCoroutine()
     {
         yield return new WaitForSeconds(despawnTime);
         Destroy(gameObject);

@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 2466792777567725417}
   - component: {fileID: -7550928527165179215}
   - component: {fileID: 3474628078589482768}
-  - component: {fileID: -3088175439524031001}
-  m_Layer: 0
+  - component: {fileID: 3028033659610728213}
+  - component: {fileID: 2811683814607846154}
+  m_Layer: 7
   m_Name: Bullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +138,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 392
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -157,7 +158,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &-3088175439524031001
+--- !u!114 &3028033659610728213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,8 +167,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 9032077396036401449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74003ccd58a10ec4abbd5695b1703d93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c8f0473c157b14488f65801c6cf567c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  damageType: 2
+  resetCanDamage: 0
+  destroyOnHit: 1
+--- !u!114 &2811683814607846154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032077396036401449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6009f1fb81960b4428b8a663b7ccc1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Throwable
   despawnTime: 10
-  speed: 10
+  speed: 8

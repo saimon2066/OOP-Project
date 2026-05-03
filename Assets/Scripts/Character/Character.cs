@@ -48,8 +48,12 @@ public abstract class Character : MonoBehaviour, IDamageable
         _currentHealth = maxHealth;
     }
 
-    public void AddHealth(int add)
+    public void TakeDamage(int damage)
     {
-        _currentHealth += add;
+        _currentHealth -= damage;
+    }
+    public void Heal(int heal)
+    {
+        _currentHealth += heal;
     }
 }

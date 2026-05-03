@@ -1,13 +1,20 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(DamageDealer))]
 public class MeeleEnemy : BaseEnemy
 {
-    private bool _wasAttacking;
+    private DamageDealer _damageDealer;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        _damageDealer = GetComponent<DamageDealer>();
+    }
 
     protected override void Attack()
     {
-        _wasAttacking = true;
+        _damageDealer.SetDamage(attackDamage);
     }
     protected override void Chase()
     {
@@ -18,14 +25,5 @@ public class MeeleEnemy : BaseEnemy
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f; // get the angle
         rb2D.SetRotation(angle);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IDamageable damageable) && _wasAttacking)
-        {
-            damageable.AddHealth(-attackDamage);
-        }
-        _wasAttacking = false;
     }
 }

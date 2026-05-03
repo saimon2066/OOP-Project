@@ -1076,6 +1076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeeleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8613700655485455714, guid: f8708dc46f7aad64d9fae966a75350f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
